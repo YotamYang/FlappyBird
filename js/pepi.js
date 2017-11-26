@@ -14,13 +14,11 @@
 	Pepi.prototype.update = function() {
 		this.x -= 2;
 		if (this.x + this.image1.width == 0) {
-			debugger;
 			game.actors = _.without(game.actors, this);
 		}
 	};
 
 	Pepi.prototype.render = function() {
-		debugger;
 		game.ctx.drawImage(this.image1, 0, this.image1.height - this.height, this.image1.width, this.height, this.x, 0, this.image1.width, this.height);
 
 		var height = game.canvas.height - this.height - this.empty - game.Robj['land'].height;

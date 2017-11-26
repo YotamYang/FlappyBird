@@ -17,7 +17,7 @@
 		this.Robj = {
 		};
 
-		this.pepiDistance = 100;
+		this.pepiDistance = 120;
 
 		this.actors = [];
 		this.pepis = [];
@@ -51,9 +51,11 @@
 
 	Game.prototype.start = function() {
 		var self = this;
+		this.bindEvent();
 
 		this.bg = new Background();
 		this.land = new Land();
+		this.bird = new Bird();
 
 		setInterval(function() {
 			self.mainloop();
@@ -74,5 +76,13 @@
 			this.actors[i].render();
 		}
 		this.ctx.fillText("FNO:" + this.frameNumber, 10, 20);
+	};
+
+	Game.prototype.bindEvent = function() {
+		var self = this;
+		self.canvas.onmousedown = function() {
+			debugger;
+			self.bird.fly();
+		};
 	};
 })();
