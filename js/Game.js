@@ -2,6 +2,7 @@
 	window.Game = function() {
 		this.canvas = document.getElementsByTagName("canvas")[0];
 		this.ctx = this.canvas.getContext('2d');
+		this.timer = null;
 		this.frameNumber = 0;
 
 		this.R = {
@@ -57,7 +58,7 @@
 		this.land = new Land();
 		this.bird = new Bird();
 
-		setInterval(function() {
+		this.timer = setInterval(function() {
 			self.mainloop();
 		}, 20);
 	};
@@ -81,8 +82,12 @@
 	Game.prototype.bindEvent = function() {
 		var self = this;
 		self.canvas.onmousedown = function() {
-			debugger;
 			self.bird.fly();
 		};
+	};
+
+	Game.prototype.over = function() {
+		var self = this;
+		clearInterval(self.timer)
 	};
 })();

@@ -6,11 +6,19 @@
 		game.actors.push(this);
 	};
 
+	Land.prototype.crash = function() {
+		var birdPosition = game.bird.getPosition();
+		if(game.canvas.height - this.image.height < birdPosition.cy + birdPosition.height / 2) {
+			game.over();
+		}
+	};
+
 	Land.prototype.update = function() {
 		this.x -= 2;
 		if(game.canvas.width + this.x == 0) {
 			this.x = 0;
 		}
+		this.crash();
 	};
 
 	Land.prototype.render = function() {

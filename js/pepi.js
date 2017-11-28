@@ -11,11 +11,22 @@
 		game.actors.push(this);
 	};
 
+	Pepi.prototype.crash = function() {
+		var birdPosition = game.bird.getPosition();
+		if(this.x < birdPosition.cx + birdPosition.width / 2 && this.x + this.image1.width > birdPosition.cx - birdPosition.width / 2) {
+			if(birdPosition.cy - birdPosition.height / 2 < this.height || birdPosition.cy + birdPosition.height / 2 > this.height + this.empty) {
+				game.over();
+			}
+		}
+		// console.log(game.bird.getPosition())
+	};
+
 	Pepi.prototype.update = function() {
 		this.x -= 2;
 		if (this.x + this.image1.width == 0) {
 			game.actors = _.without(game.actors, this);
 		}
+		this.crash();
 	};
 
 	Pepi.prototype.render = function() {

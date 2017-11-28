@@ -13,6 +13,15 @@
 		game.actors.push(this);
 	};
 
+	Bird.prototype.getPosition = function() {
+		return {
+			cx: this.x + this.image[0].width / 2,
+			cy: this.height + this.image[0].height / 2,
+			width: 30,
+			height: 20,
+		}
+	}
+
 	Bird.prototype.fly = function() {
 		this.status = "U";
 		this.downSpeed = -400
