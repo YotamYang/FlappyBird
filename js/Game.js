@@ -1,10 +1,8 @@
 (function() {
 	window.Game = function() {
 		this.canvas = document.getElementsByTagName("canvas")[0];
-		var self = this;
-		this.sm = new SceneManagement(function() {
-			self.start.call(self);
-		}, this.canvas);
+		this.ctx = this.canvas.getContext("2d");
+		this.sm = new SceneManagement(this);
 	};
 
 	Game.prototype.start = function() {
